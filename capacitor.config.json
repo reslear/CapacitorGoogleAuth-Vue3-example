@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "GoogleAuth": {
+      "scopes": ["profile", "email"],
+      "serverClientId": "xxxxxx-xxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
+      "forceCodeForRefreshToken": true
+    }
+  }
+}
