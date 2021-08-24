@@ -28,7 +28,7 @@ import { useStore } from '@/stores/main';
 import { IonPage, IonContent, IonAvatar, IonButton, IonItem, IonLabel } from '@ionic/vue';
 import { computed, defineComponent } from 'vue';
 
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { GoogleAuth } from '@reslear/capacitor-google-auth';
 import router from '@/router';
 
 export default defineComponent({

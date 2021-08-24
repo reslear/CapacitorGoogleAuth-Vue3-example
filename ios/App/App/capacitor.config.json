@@ -1,0 +1,14 @@
+{
+	"appId": "com.company.auth",
+	"appName": "CapacitorGoogleAuth-Vue3-example",
+	"webDir": "dist",
+	"plugins": {
+		"GoogleAuth": {
+			"scopes": [
+				"profile",
+				"email"
+			],
+			"forceCodeForRefreshToken": true
+		}
+	}
+}

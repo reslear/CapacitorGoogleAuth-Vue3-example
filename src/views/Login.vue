@@ -16,7 +16,7 @@
 <script lang="ts">
 import { IonPage, IonContent, IonButton } from '@ionic/vue';
 import { defineComponent, onMounted } from 'vue';
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { GoogleAuth } from '@reslear/capacitor-google-auth';
 import { useStore, UserWithoutAuth } from '@/stores/main';
 import router from '@/router';
 

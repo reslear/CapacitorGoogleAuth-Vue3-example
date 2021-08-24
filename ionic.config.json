@@ -1,5 +1,7 @@
 {
   "name": "CapacitorGoogleAuth-Vue3-example",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "vue"
 }

@@ -1,7 +1,7 @@
 // stores/counter.js
 import { defineStore } from 'pinia';
 
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { GoogleAuth } from '@reslear/capacitor-google-auth';
 
 // TODO: remove
 type Await<T> = T extends PromiseLike<infer U> ? U : T;
