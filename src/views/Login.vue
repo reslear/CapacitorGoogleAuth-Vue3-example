@@ -16,8 +16,8 @@
 <script lang="ts">
 import { IonPage, IonContent, IonButton } from '@ionic/vue';
 import { defineComponent, onMounted } from 'vue';
-import { GoogleAuth } from '@reslear/capacitor-google-auth';
-import { useStore, UserWithoutAuth } from '@/stores/main';
+import { GoogleAuth, User } from '@reslear/capacitor-google-auth';
+import { useStore } from '@/stores/main';
 import router from '@/router';
 
 export default defineComponent({
@@ -31,27 +31,18 @@ export default defineComponent({
     const store = useStore();
 
     onMounted(() => {
-      // TODO: remove
-      const head = document.querySelector('head');
-      const meta = document.createElement('meta');
-      meta.name = 'google-signin-client_id';
-      meta.content = process.env.VUE_APP_GOOGLE_CLIENT_ID;
-
-      if (head) {
-        head.appendChild(meta);
-      }
-
-      GoogleAuth.init();
+      GoogleAuth.initialize({
+        clientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
+        grantOfflineAccess: true,
+        scopes: ['profile', 'email'],
+      });
     });
 
     const logIn = async () => {
       try {
-        const response: UserWithoutAuth = await GoogleAuth.signIn();
+        const response: User = await GoogleAuth.signIn();
 
         if (response.id) {
-          delete response.authentication;
-          delete response.serverAuthCode;
-
           store.setUser(response);
           router.push('/');
         }

@@ -13,7 +13,7 @@
         <div class="items">
           <ion-item v-for="(value, key) in user" :key="key">
             <ion-label position="fixed">{{ key }}</ion-label>
-            <div>{{ value }}</div>
+            <ion-input :value="value" />
           </ion-item>
         </div>
 
@@ -25,14 +25,14 @@
 
 <script lang="ts">
 import { useStore } from '@/stores/main';
-import { IonPage, IonContent, IonAvatar, IonButton, IonItem, IonLabel } from '@ionic/vue';
+import { IonPage, IonContent, IonAvatar, IonButton, IonItem, IonLabel, IonInput } from '@ionic/vue';
 import { computed, defineComponent } from 'vue';
 
 import { GoogleAuth } from '@reslear/capacitor-google-auth';
 import router from '@/router';
 
 export default defineComponent({
-  components: { IonContent, IonPage, IonAvatar, IonButton, IonItem, IonLabel },
+  components: { IonContent, IonPage, IonAvatar, IonButton, IonItem, IonLabel, IonInput },
   setup() {
     const store = useStore();
     const user = computed(() => store.user);

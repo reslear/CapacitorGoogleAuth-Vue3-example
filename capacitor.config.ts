@@ -7,6 +7,7 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   plugins: {
     GoogleAuth: {
+      clientId: process.env.GOOGLE_CLIENT_ID_IOS,
       scopes: ['profile', 'email'],
       serverClientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
       forceCodeForRefreshToken: true,

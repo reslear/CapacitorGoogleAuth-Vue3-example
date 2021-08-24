@@ -1,19 +1,9 @@
-// stores/counter.js
 import { defineStore } from 'pinia';
-
-import { GoogleAuth } from '@reslear/capacitor-google-auth';
-
-// TODO: remove
-type Await<T> = T extends PromiseLike<infer U> ? U : T;
-export type User = Await<ReturnType<typeof GoogleAuth.signIn>>;
-
-// TODO: remove
-export type UserWithoutAuth = Omit<User, 'authentication' | 'serverAuthCode'> &
-  Partial<Pick<User, 'authentication' | 'serverAuthCode'>>;
+import type { User } from '@reslear/capacitor-google-auth';
 
 const getLocalUser = () => {
   try {
-    const user: UserWithoutAuth = JSON.parse(localStorage.getItem('user') || '');
+    const user: User = JSON.parse(localStorage.getItem('user') || '');
     return user;
   } catch (e) {
     //
@@ -21,16 +11,22 @@ const getLocalUser = () => {
 };
 
 const getEmptyUser = () => {
-  const user: UserWithoutAuth = {
+  const user = {
     email: '',
     familyName: '',
     givenName: '',
     id: '',
     imageUrl: '',
     name: '',
+    accessToken: '',
+    idToken: '',
+    serverAuthCode: '',
+    refreshToken: '',
   };
   return user;
 };
+
+export type SUser = ReturnType<typeof getEmptyUser>;
 
 export const useStore = defineStore('auth', {
   state() {
@@ -43,8 +39,9 @@ export const useStore = defineStore('auth', {
     },
   },
   actions: {
-    setUser(user: UserWithoutAuth) {
-      this.user = user;
+    setUser(payload: User) {
+      const { authentication, ...user } = payload;
+      this.user = { ...user, ...authentication };
     },
     resetUser() {
       this.user = getEmptyUser();
