@@ -4,10 +4,12 @@
 	"webDir": "dist",
 	"plugins": {
 		"GoogleAuth": {
+			"clientId": "946449324174-ilr96bqn761dc08q6mpmlcrgqrugfu1m.apps.googleusercontent.com",
 			"scopes": [
 				"profile",
 				"email"
 			],
+			"serverClientId": "946449324174-v8hn8ttu48ht05dhhbc459mmfeej1574.apps.googleusercontent.com",
 			"forceCodeForRefreshToken": true
 		}
 	}

@@ -1,5 +1,9 @@
-// <reference types="@reslear/capacitor-google-auth" />
+/// <reference types="@reslear/capacitor-google-auth" />
+
 import { CapacitorConfig } from '@capacitor/cli';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const config: CapacitorConfig = {
   appId: 'com.company.auth',
@@ -7,7 +11,7 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   plugins: {
     GoogleAuth: {
-      clientId: process.env.GOOGLE_CLIENT_ID_IOS,
+      clientId: process.env.GOOGLE_CLIENT_ID_IOS || '',
       scopes: ['profile', 'email'],
       serverClientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
       forceCodeForRefreshToken: true,
