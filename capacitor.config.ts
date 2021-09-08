@@ -12,7 +12,12 @@ const config: CapacitorConfig = {
   plugins: {
     GoogleAuth: {
       clientId: process.env.GOOGLE_CLIENT_ID_IOS || '',
-      scopes: ['profile', 'email'],
+      scopes: [
+        'profile',
+        'email',
+        'https://www.googleapis.com/auth/calendar.events',
+        'https://www.googleapis.com/auth/contacts.readonly',
+      ],
       serverClientId: process.env.VUE_APP_GOOGLE_CLIENT_ID,
       forceCodeForRefreshToken: true,
     },
