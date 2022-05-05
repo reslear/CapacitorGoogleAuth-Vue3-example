@@ -2,4 +2,6 @@
 
 ![](screen.png)
 
-MIT (c) reslear
+## License
+
+[MIT](./LICENSE) License © 2021-Present [reslear](https://github.com/reslear)
